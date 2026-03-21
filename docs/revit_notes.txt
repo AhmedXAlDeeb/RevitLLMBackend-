@@ -1,0 +1,4 @@
+Revit walls are created using the Wall tool.
+Doors must be hosted by walls.
+Columns are structural elements used in building models.
+Levels define vertical heights in Revit projects.
