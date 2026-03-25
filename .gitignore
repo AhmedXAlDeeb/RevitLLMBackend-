@@ -1,2 +1,5 @@
 *.pdf
 RevitLLMAddin\
+__pycache__\
+*.log
+*.tmp
