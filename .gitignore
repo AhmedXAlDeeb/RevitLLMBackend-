@@ -3,3 +3,27 @@ RevitLLMAddin\
 __pycache__\
 *.log
 *.tmp
+
+# Virtual environments
+.venv\
+.venv_py314_backup\
+venv\
+
+# Secrets / local configuration
+.env
+
+# Python artifacts
+*.pyc
+*.pyo
+*.pyd
+
+# Generated vector/index data
+vector.index
+chunks.pkl
+code_chunks.pkl
+
+# Generated reports
+revit_review_output\
+
+# Editor settings
+.vscode\
