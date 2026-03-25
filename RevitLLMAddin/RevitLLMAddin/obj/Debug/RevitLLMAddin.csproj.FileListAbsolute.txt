@@ -1,9 +1,0 @@
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\bin\Debug\RevitLLMAddin.dll
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\bin\Debug\RevitLLMAddin.pdb
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\bin\Debug\Newtonsoft.Json.dll
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\bin\Debug\Newtonsoft.Json.xml
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\obj\Debug\RevitLLMAddin.csproj.AssemblyReference.cache
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\obj\Debug\RevitLLMAddin.csproj.CoreCompileInputs.cache
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\obj\Debug\RevitLLM.4D30C0AF.Up2Date
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\obj\Debug\RevitLLMAddin.dll
-C:\Users\KAREEM\Desktop\RevitLLMBackend\RevitLLMAddin\RevitLLMAddin\obj\Debug\RevitLLMAddin.pdb
