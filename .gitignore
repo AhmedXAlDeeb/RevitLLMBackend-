@@ -1,13 +1,13 @@
 *.pdf
-RevitLLMAddin\
-__pycache__\
+RevitLLMAddin/
+__pycache__/
 *.log
 *.tmp
 
 # Virtual environments
-.venv\
-.venv_py314_backup\
-venv\
+.venv/
+.venv_py314_backup/
+venv/
 
 # Secrets / local configuration
 .env
@@ -23,7 +23,8 @@ chunks.pkl
 code_chunks.pkl
 
 # Generated reports
-revit_review_output\
+revit_review_output.
 
 # Editor settings
-.vscode\
+.vscode/
+.venv/Lib/site-packages/aiohappyeyeballs/__init__.py
