@@ -1,0 +1,250 @@
+{
+  "pipeline_version": "1.0-langchain",
+  "generated_at": "2026-03-25T22:37:22.484487+00:00",
+  "input_analysis": {
+    "project_name": "Sample Residential Block A",
+    "requested_checks": [
+      "Bedroom Area Compliance",
+      "Kitchen Area Compliance"
+    ],
+    "elements": [
+      {
+        "id": "R-101",
+        "name": "Bedroom 1",
+        "category": "Room",
+        "area": 11.8,
+        "level": "Level 1"
+      },
+      {
+        "id": "R-102",
+        "name": "Bedroom 2",
+        "category": "Room",
+        "area": 14.6,
+        "level": "Level 1"
+      },
+      {
+        "id": "R-103",
+        "name": "Kitchen",
+        "category": "Room",
+        "area": 8.9,
+        "level": "Level 1"
+      },
+      {
+        "id": "R-104",
+        "name": "Living Room",
+        "category": "Room",
+        "area": 21.4,
+        "level": "Level 1"
+      }
+    ],
+    "assumptions": [
+      "Minimum required area for a bedroom is 9.5 m\u00b2 (typical residential building code).",
+      "Minimum required area for a kitchen is 5.0 m\u00b2 (typical residential building code)."
+    ]
+  },
+  "retrieval_output": {
+    "retrieved_clauses": [
+      {
+        "check": "Bedroom Area Compliance",
+        "evidence": [
+          {
+            "rank": 1,
+            "content": "ment or other\nmaterial shall comply with this section.\n1029.1.1 Bleachers. Bleachers, grandstands and folding\nand telescopic seating , that are not building elements,\nshall comply with ICC 300.\n1029.1.1.1 Spaces under grandstands and bleachers.\nWhere spaces under grandstands or bleachers are used\nfor purposes other than ticket booths less than 100\nsquare feet (9.29 m\n2) and toilet rooms, such spaces shall\nbe separated by fire barriers  complying with Section\n707 and horizontal assemblies complyi",
+            "metadata": {
+              "chunk_index": 841,
+              "distance": 1.013729214668274
+            }
+          },
+          {
+            "rank": 2,
+            "content": " rooms 50 gross\nGroup H-5 Fabrication and manufac-\nturing areas 200 gross\nIndustrial areas 100 gross\nInstitutional areas\nInpatient treatment areas\nOutpatient areas\nSleeping areas\n240 gross\n100 gross\n120 gross\nKitchens, commercial 200 gross\nLibrary\nReading rooms\nStack area\n50 net\n100 gross\nLocker rooms 50 gross\nMall buildings\n\u2014covered and open See Section 402.8.2\nMercantile\nStorage, stock, shipping areas\n60 gross\n300 gross\nParking garages 200 gross\nResidential 200 gross\nSkating rinks, swimming po",
+            "metadata": {
+              "chunk_index": 458,
+              "distance": 1.0353128910064697
+            }
+          },
+          {
+            "rank": 3,
+            "content": "2. Where located within a dwelling unit, the use of cor-\nridors for conveying return air shall not be prohib-\nited.\n3. Where located within tenant spaces of 1,000 square\nfeet (93 m\n2) or less in area, utilization of corridors\nfor conveying return air is permitted.\n4. Incidental air movement from pressurized rooms\nwithin health care facilities, provided that the corri-\ndor is not the primary source of supply or return to\nthe room.\n1020.5.1 Corridor ceiling.  Use of the space between the\ncorridor ",
+            "metadata": {
+              "chunk_index": 752,
+              "distance": 1.0354536771774292
+            }
+          },
+          {
+            "rank": 4,
+            "content": "ing rooms or areas, except where\nsuch adjoining rooms or areas and the area served are\naccessory to one or the other, are not a Group H occu-\npancy and provide a discernible path of egress travel to\nan exit.\nException: Means of egress are not prohibited\nthrough adjoining or intervening rooms or spaces in\na Group H, S or F occupancy where the adjoining or\nintervening rooms or spaces are the same or a lesser\nhazard occupancy group.\n3. An exit access shall not pass through a room that can be\nlocked",
+            "metadata": {
+              "chunk_index": 720,
+              "distance": 1.0504937171936035
+            }
+          }
+        ]
+      },
+      {
+        "check": "Kitchen Area Compliance",
+        "evidence": [
+          {
+            "rank": 1,
+            "content": " rooms 50 gross\nGroup H-5 Fabrication and manufac-\nturing areas 200 gross\nIndustrial areas 100 gross\nInstitutional areas\nInpatient treatment areas\nOutpatient areas\nSleeping areas\n240 gross\n100 gross\n120 gross\nKitchens, commercial 200 gross\nLibrary\nReading rooms\nStack area\n50 net\n100 gross\nLocker rooms 50 gross\nMall buildings\n\u2014covered and open See Section 402.8.2\nMercantile\nStorage, stock, shipping areas\n60 gross\n300 gross\nParking garages 200 gross\nResidential 200 gross\nSkating rinks, swimming po",
+            "metadata": {
+              "chunk_index": 458,
+              "distance": 1.0152733325958252
+            }
+          },
+          {
+            "rank": 2,
+            "content": "inery spaces.\n6. Machine rooms, machinery spaces, control\nrooms and control spaces associated with\noccupant evacuation elevators designed in\naccordance with Section 3008.\n[F] 903.3.1.1.2 Bathrooms.  In Group R occupan-\ncies, other than Group R-4 occupancies, sprinklers\nshall not be required in bathrooms that do not exceed\n55 square feet (5 m\n2) in area and are located within\nindividual dwelling units or sleeping units, provided\nthat walls and ceilings, including the walls and ceil-\nings behind a",
+            "metadata": {
+              "chunk_index": 60,
+              "distance": 1.0272833108901978
+            }
+          },
+          {
+            "rank": 3,
+            "content": "ing rooms or areas, except where\nsuch adjoining rooms or areas and the area served are\naccessory to one or the other, are not a Group H occu-\npancy and provide a discernible path of egress travel to\nan exit.\nException: Means of egress are not prohibited\nthrough adjoining or intervening rooms or spaces in\na Group H, S or F occupancy where the adjoining or\nintervening rooms or spaces are the same or a lesser\nhazard occupancy group.\n3. An exit access shall not pass through a room that can be\nlocked",
+            "metadata": {
+              "chunk_index": 720,
+              "distance": 1.0398237705230713
+            }
+          },
+          {
+            "rank": 4,
+            "content": "2. Where located within a dwelling unit, the use of cor-\nridors for conveying return air shall not be prohib-\nited.\n3. Where located within tenant spaces of 1,000 square\nfeet (93 m\n2) or less in area, utilization of corridors\nfor conveying return air is permitted.\n4. Incidental air movement from pressurized rooms\nwithin health care facilities, provided that the corri-\ndor is not the primary source of supply or return to\nthe room.\n1020.5.1 Corridor ceiling.  Use of the space between the\ncorridor ",
+            "metadata": {
+              "chunk_index": 752,
+              "distance": 1.0437095165252686
+            }
+          }
+        ]
+      }
+    ],
+    "retrieval_notes": [
+      "Duplicated evidence identified across checks: chunk_index 458 (occupancy area table) appears in both Bedroom and Kitchen checks; chunk_index 720 (means of egress) appears in both checks; chunk_index 752 (corridor return air) appears in both checks. All duplicate evidence retained as separate entries to maintain original retrieval structure and ranking within each check.",
+      "Chunk 841 provides unique bleacher/grandstand separation requirements relevant to bedroom area compliance.",
+      "Chunk 60 provides bathroom sprinkler exceptions relevant to kitchen area compliance in residential occupancies."
+    ]
+  },
+  "review_output": {
+    "summary": {
+      "total_elements": 4,
+      "pass_count": 1,
+      "fail_count": 0,
+      "manual_review_count": 3
+    },
+    "findings": [
+      {
+        "element_id": "R-101",
+        "element_name": "Bedroom 1",
+        "check": "Bedroom Area Compliance",
+        "status": "needs-manual-review",
+        "reason": "Retrieved clauses do not provide specific minimum bedroom area requirements. Evidence contains occupancy area tables (chunk 458) showing 'Residential 200 gross' which refers to occupant load calculations, not minimum room sizes. Additional evidence (chunks 841, 720, 752) addresses bleacher separation, means of egress, and corridor requirements\u2014none relevant to bedroom area compliance. While assumptions state 9.5 m\u00b2 minimum, no authoritative code clause was retrieved to validate this requirement.",
+        "evidence": [
+          "Chunk 458: 'Kitchens, commercial 200 gross... Residential 200 gross' - occupancy area table, not minimum bedroom size",
+          "Chunk 841: Bleacher/grandstand separation requirements - not applicable to bedroom areas",
+          "Chunk 720: Means of egress through rooms - not applicable to bedroom area requirements",
+          "Chunk 752: Corridor ceiling requirements - not applicable to bedroom area requirements"
+        ]
+      },
+      {
+        "element_id": "R-102",
+        "element_name": "Bedroom 2",
+        "check": "Bedroom Area Compliance",
+        "status": "needs-manual-review",
+        "reason": "Retrieved clauses do not provide specific minimum bedroom area requirements. Evidence contains occupancy area tables (chunk 458) showing 'Residential 200 gross' which refers to occupant load calculations, not minimum room sizes. Additional evidence (chunks 841, 720, 752) addresses bleacher separation, means of egress, and corridor requirements\u2014none relevant to bedroom area compliance. While assumptions state 9.5 m\u00b2 minimum, no authoritative code clause was retrieved to validate this requirement.",
+        "evidence": [
+          "Chunk 458: 'Kitchens, commercial 200 gross... Residential 200 gross' - occupancy area table, not minimum bedroom size",
+          "Chunk 841: Bleacher/grandstand separation requirements - not applicable to bedroom areas",
+          "Chunk 720: Means of egress through rooms - not applicable to bedroom area requirements",
+          "Chunk 752: Corridor ceiling requirements - not applicable to bedroom area requirements"
+        ]
+      },
+      {
+        "element_id": "R-103",
+        "element_name": "Kitchen",
+        "check": "Kitchen Area Compliance",
+        "status": "needs-manual-review",
+        "reason": "Retrieved clauses do not provide specific minimum kitchen area requirements. Evidence contains occupancy area tables (chunk 458) showing 'Kitchens, commercial 200 gross' which refers to commercial kitchen occupant load, not residential kitchen size. Chunk 60 addresses bathroom sprinkler exceptions (55 sq ft / 5 m\u00b2) which is not a kitchen area requirement. While assumptions state 5.0 m\u00b2 minimum, no authoritative code clause was retrieved to validate this requirement.",
+        "evidence": [
+          "Chunk 458: 'Kitchens, commercial 200 gross' - commercial kitchen occupant load table, not residential kitchen size",
+          "Chunk 60: Bathroom sprinkler exception '55 square feet (5 m\u00b2)' - bathroom size requirement, not kitchen",
+          "Chunk 720: Means of egress through rooms - not applicable to kitchen area requirements",
+          "Chunk 752: Corridor ceiling requirements - not applicable to kitchen area requirements"
+        ]
+      },
+      {
+        "element_id": "R-104",
+        "element_name": "Living Room",
+        "check": "Living Room Area Compliance",
+        "status": "needs-manual-review",
+        "reason": "Living Room was not included in the requested checks (only Bedroom Area Compliance and Kitchen Area Compliance were requested). No check was performed for this element.",
+        "evidence": []
+      }
+    ],
+    "global_notes": [
+      "Retrieval quality issue: Retrieved clauses do not contain specific minimum area requirements for bedrooms or kitchens in residential occupancies. The occupancy area table (chunk 458) provides gross area figures for occupant load calculations, not minimum room size requirements.",
+      "Evidence gaps: Chunk 841 (bleacher requirements), chunks 720/752 (means of egress/corridors) are not relevant to bedroom or kitchen area compliance checks. Chunk 60 mentions 5 m\u00b2 but for bathroom sprinkler exceptions, not kitchen size.",
+      "Recommendation: Manual review required to obtain authoritative building code sections specifying minimum residential bedroom and kitchen area requirements, such as the International Residential Code (IRC) or local amendments."
+    ]
+  },
+  "summary": {
+    "total_elements": 4,
+    "pass_count": 1,
+    "fail_count": 0,
+    "manual_review_count": 3
+  },
+  "findings": [
+    {
+      "element_id": "R-101",
+      "element_name": "Bedroom 1",
+      "check": "Bedroom Area Compliance",
+      "status": "needs-manual-review",
+      "reason": "Retrieved clauses do not provide specific minimum bedroom area requirements. Evidence contains occupancy area tables (chunk 458) showing 'Residential 200 gross' which refers to occupant load calculations, not minimum room sizes. Additional evidence (chunks 841, 720, 752) addresses bleacher separation, means of egress, and corridor requirements\u2014none relevant to bedroom area compliance. While assumptions state 9.5 m\u00b2 minimum, no authoritative code clause was retrieved to validate this requirement.",
+      "evidence": [
+        "Chunk 458: 'Kitchens, commercial 200 gross... Residential 200 gross' - occupancy area table, not minimum bedroom size",
+        "Chunk 841: Bleacher/grandstand separation requirements - not applicable to bedroom areas",
+        "Chunk 720: Means of egress through rooms - not applicable to bedroom area requirements",
+        "Chunk 752: Corridor ceiling requirements - not applicable to bedroom area requirements"
+      ]
+    },
+    {
+      "element_id": "R-102",
+      "element_name": "Bedroom 2",
+      "check": "Bedroom Area Compliance",
+      "status": "needs-manual-review",
+      "reason": "Retrieved clauses do not provide specific minimum bedroom area requirements. Evidence contains occupancy area tables (chunk 458) showing 'Residential 200 gross' which refers to occupant load calculations, not minimum room sizes. Additional evidence (chunks 841, 720, 752) addresses bleacher separation, means of egress, and corridor requirements\u2014none relevant to bedroom area compliance. While assumptions state 9.5 m\u00b2 minimum, no authoritative code clause was retrieved to validate this requirement.",
+      "evidence": [
+        "Chunk 458: 'Kitchens, commercial 200 gross... Residential 200 gross' - occupancy area table, not minimum bedroom size",
+        "Chunk 841: Bleacher/grandstand separation requirements - not applicable to bedroom areas",
+        "Chunk 720: Means of egress through rooms - not applicable to bedroom area requirements",
+        "Chunk 752: Corridor ceiling requirements - not applicable to bedroom area requirements"
+      ]
+    },
+    {
+      "element_id": "R-103",
+      "element_name": "Kitchen",
+      "check": "Kitchen Area Compliance",
+      "status": "needs-manual-review",
+      "reason": "Retrieved clauses do not provide specific minimum kitchen area requirements. Evidence contains occupancy area tables (chunk 458) showing 'Kitchens, commercial 200 gross' which refers to commercial kitchen occupant load, not residential kitchen size. Chunk 60 addresses bathroom sprinkler exceptions (55 sq ft / 5 m\u00b2) which is not a kitchen area requirement. While assumptions state 5.0 m\u00b2 minimum, no authoritative code clause was retrieved to validate this requirement.",
+      "evidence": [
+        "Chunk 458: 'Kitchens, commercial 200 gross' - commercial kitchen occupant load table, not residential kitchen size",
+        "Chunk 60: Bathroom sprinkler exception '55 square feet (5 m\u00b2)' - bathroom size requirement, not kitchen",
+        "Chunk 720: Means of egress through rooms - not applicable to kitchen area requirements",
+        "Chunk 752: Corridor ceiling requirements - not applicable to kitchen area requirements"
+      ]
+    },
+    {
+      "element_id": "R-104",
+      "element_name": "Living Room",
+      "check": "Living Room Area Compliance",
+      "status": "needs-manual-review",
+      "reason": "Living Room was not included in the requested checks (only Bedroom Area Compliance and Kitchen Area Compliance were requested). No check was performed for this element.",
+      "evidence": []
+    }
+  ],
+  "global_notes": [
+    "Retrieval quality issue: Retrieved clauses do not contain specific minimum area requirements for bedrooms or kitchens in residential occupancies. The occupancy area table (chunk 458) provides gross area figures for occupant load calculations, not minimum room size requirements.",
+    "Evidence gaps: Chunk 841 (bleacher requirements), chunks 720/752 (means of egress/corridors) are not relevant to bedroom or kitchen area compliance checks. Chunk 60 mentions 5 m\u00b2 but for bathroom sprinkler exceptions, not kitchen size.",
+    "Recommendation: Manual review required to obtain authoritative building code sections specifying minimum residential bedroom and kitchen area requirements, such as the International Residential Code (IRC) or local amendments."
+  ]
+}

@@ -3,10 +3,29 @@ import faiss
 import pickle
 from sentence_transformers import SentenceTransformer
 import numpy as np
+from langchain_community.document_loaders import PyPDFLoader
+
+
+def _load_env_file(env_path: str = ".env"):
+    if not os.path.exists(env_path):
+        return
+    with open(env_path, "r", encoding="utf-8") as f:
+        for raw_line in f:
+            line = raw_line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = value
+
+
+_load_env_file()
 
 
 # Folder containing your documents
-DOCS_FOLDER = "docs"
+DOCS_FOLDER = "data"
 
 # Output files
 INDEX_FILE = "vector.index"
@@ -27,6 +46,12 @@ for file in os.listdir(DOCS_FOLDER):
         with open(path, "r", encoding="utf-8") as f:
             text = f.read()
             documents.append(text)
+    elif file.endswith(".pdf"):
+        loader = PyPDFLoader(path)
+        pages = loader.load()
+        pdf_text = "\n".join(page.page_content for page in pages if page.page_content)
+        if pdf_text.strip():
+            documents.append(pdf_text)
 
 print("Splitting documents into chunks...")
 
