@@ -1,6 +1,7 @@
 fastapi
 pydantic
 uvicorn
+requests
 numpy
 faiss-cpu
 langchain-community

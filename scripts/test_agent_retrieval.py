@@ -20,7 +20,7 @@ def _load_env_file(env_path: str = ".env"):
 
 _load_env_file()
 
-from agentic_revit_rag_agent import (
+from src.revit_backend.pipeline.agentic_revit_rag_agent import (
     answer_question_with_rules,
     init_code_vectorstore,
     retrieve_code_context,

@@ -23,7 +23,7 @@ chunks.pkl
 code_chunks.pkl
 
 # Generated reports
-revit_review_output.
+revit_review_output/
 
 # Editor settings
 .vscode/

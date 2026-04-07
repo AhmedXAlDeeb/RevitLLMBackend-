@@ -1,5 +1,5 @@
-from loaders.pdf_loader import PDFLoader
-from vectorstore.faiss_store import FAISSStore
+from src.revit_backend.loaders.pdf_loader import PDFLoader
+from src.revit_backend.vectorstore.faiss_store import FAISSStore
 
 # Load PDF
 loader = PDFLoader("data/2015_International_Building_Code-238-323.pdf")

@@ -304,6 +304,117 @@ Return ONLY valid JSON using this shape:
     }
 
 
+def extract_structured_rules(
+    question: str,
+    code_file: str,
+    top_k: int = 6,
+    model: str | None = None,
+    base_url: str = "http://localhost:11434",
+    embedding_model: str = "nomic-embed-text-v2-moe:latest",
+    embedding_base_url: str | None = None,
+) -> Dict[str, Any]:
+    """Extract machine-readable compliance rules from retrieved code snippets."""
+    if not question.strip():
+        raise ValueError("Question must not be empty.")
+
+    init_message = init_code_vectorstore(
+        code_file=code_file,
+        embedding_model=embedding_model,
+        base_url=embedding_base_url or base_url,
+    )
+    hits = retrieve_code_context(query=question, k=top_k)
+
+    llm = _build_llm(model=model, base_url=base_url)
+    prompt = ChatPromptTemplate.from_template(
+        """
+You are a building-code rule extraction assistant.
+
+Question:
+{question}
+
+Retrieved code snippets:
+{hits}
+
+Task:
+Extract only explicit, checkable numeric rules from the snippets.
+
+Rules schema requirements:
+- element: usually "room" unless snippet clearly states another type
+- property: BIM property to check (example: area, height, width)
+- operator: one of >, >=, <, <=, ==, !=
+- value: numeric value only
+- unit: textual unit (example: m2, m, mm), or "unknown"
+- source_excerpt: short quote from snippet that supports the rule
+
+Return ONLY valid JSON in this format:
+{{
+  "answer": "string",
+  "rules": [
+    {{
+      "element": "room",
+      "property": "area",
+      "operator": ">=",
+      "value": 9,
+      "unit": "m2",
+      "source_excerpt": "..."
+    }}
+  ]
+}}
+
+If no checkable rule exists, return "rules": [].
+"""
+    )
+
+    raw = llm.invoke(
+        prompt.format_messages(
+            question=question,
+            hits=json.dumps(hits, ensure_ascii=True),
+        )
+    ).content
+    parsed = _extract_json(raw)
+    if not isinstance(parsed, dict):
+        raise ValueError("Model returned non-object JSON for structured rule extraction.")
+
+    cleaned_rules: List[Dict[str, Any]] = []
+    for item in parsed.get("rules", []):
+        if not isinstance(item, dict):
+            continue
+
+        element = str(item.get("element", "room")).strip().lower() or "room"
+        property_name = str(item.get("property", "")).strip().lower().replace(" ", "_")
+        operator = str(item.get("operator", "")).strip()
+        value = item.get("value")
+        unit = str(item.get("unit", "unknown")).strip() or "unknown"
+        source_excerpt = str(item.get("source_excerpt", "")).strip()
+
+        if operator not in {">", ">=", "<", "<=", "==", "!="}:
+            continue
+        if not property_name:
+            continue
+        if not isinstance(value, (int, float)):
+            continue
+
+        cleaned_rules.append(
+            {
+                "element": element,
+                "property": property_name,
+                "operator": operator,
+                "value": float(value),
+                "unit": unit,
+                "source_excerpt": source_excerpt,
+            }
+        )
+
+    return {
+        "status": "ok",
+        "message": init_message,
+        "question": question,
+        "answer": parsed.get("answer", ""),
+        "rules": cleaned_rules,
+        "retrieval_hits": hits,
+    }
+
+
 def input_analyst_agent(llm: Any, revit_file: str, review_request: str) -> Dict[str, Any]:
     model_json = _read_json(revit_file)
 
