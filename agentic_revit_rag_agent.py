@@ -38,8 +38,7 @@ import faiss
 import numpy as np
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_ollama import ChatOllama
-from sentence_transformers import SentenceTransformer
+from langchain_ollama import ChatOllama, OllamaEmbeddings
 
 
 OUTPUT_DIR = Path("./revit_review_output")
@@ -78,20 +77,23 @@ def _resolve_ollama_model(model: str | None) -> str:
 
 
 def _resolve_embedding_model(model: str | None) -> str:
-    """Map user-provided embedding model names to valid SentenceTransformer repos."""
+    """Resolve the Ollama embedding model name from arguments or environment."""
     if model and model.strip():
-        normalized = model.strip()
-    else:
-        normalized = os.getenv("EMBEDDING_MODEL", "").strip()
+        return model.strip()
 
-    if not normalized:
-        return "sentence-transformers/all-MiniLM-L6-v2"
+    env_model = os.getenv("OLLAMA_EMBEDDING_MODEL", "").strip()
+    if env_model:
+        return env_model
 
-    # Common mismatch: Ollama embedding tag passed to SentenceTransformer.
-    if normalized in {"nomic-embed-text", "nomic-embed-text:latest"}:
-        return "sentence-transformers/all-MiniLM-L6-v2"
+    env_legacy_model = os.getenv("EMBEDDING_MODEL", "").strip()
+    if env_legacy_model:
+        return env_legacy_model
 
-    return normalized
+    return "nomic-embed-text-v2-moe:latest"
+
+
+def _build_embeddings(model: str | None, base_url: str) -> OllamaEmbeddings:
+    return OllamaEmbeddings(model=_resolve_embedding_model(model), base_url=base_url)
 
 
 def _build_llm(model: str | None, base_url: str) -> ChatOllama:
@@ -137,7 +139,7 @@ def _save_output(filename: str, content: str) -> str:
 
 def init_code_vectorstore(
     code_file: str,
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
+    embedding_model: str = "nomic-embed-text-v2-moe:latest",
     base_url: str = "http://localhost:11434",
 ) -> str:
     global FAISS_INDEX, INDEX_CHUNKS, EMBEDDING_MODEL_INSTANCE
@@ -161,8 +163,8 @@ def init_code_vectorstore(
     if not chunks:
         raise ValueError(f"No chunks generated from code file: {code_file}")
 
-    EMBEDDING_MODEL_INSTANCE = SentenceTransformer(_resolve_embedding_model(embedding_model))
-    embeddings = EMBEDDING_MODEL_INSTANCE.encode(chunks)
+    EMBEDDING_MODEL_INSTANCE = _build_embeddings(embedding_model, base_url)
+    embeddings = EMBEDDING_MODEL_INSTANCE.embed_documents(chunks)
     if len(embeddings) == 0:
         raise ValueError("No embeddings generated from chunks.")
 
@@ -181,8 +183,8 @@ def retrieve_code_context(query: str, k: int = 4) -> List[Dict[str, Any]]:
     if FAISS_INDEX is None or EMBEDDING_MODEL_INSTANCE is None or not INDEX_CHUNKS:
         raise RuntimeError("Vector store not initialized.")
 
-    query_embedding = EMBEDDING_MODEL_INSTANCE.encode([query])
-    query_array = np.array(query_embedding, dtype="float32")
+    query_embedding = EMBEDDING_MODEL_INSTANCE.embed_query(query)
+    query_array = np.array([query_embedding], dtype="float32")
     distances, indices = FAISS_INDEX.search(query_array, k)
 
     results: List[Dict[str, Any]] = []
@@ -211,7 +213,7 @@ def answer_question_with_rules(
     top_k: int = 6,
     model: str | None = None,
     base_url: str = "http://localhost:11434",
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
+    embedding_model: str = "nomic-embed-text-v2-moe:latest",
     embedding_base_url: str | None = None,
 ) -> Dict[str, Any]:
     """Answer a compliance question and extract normalized rules from retrieved code context."""
@@ -537,7 +539,7 @@ async def run_revit_review_pipeline(
     review_request: str = "Review Revit model for code compliance with focus on room areas.",
     model: str | None = None,
     base_url: str = "http://localhost:11434",
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
+    embedding_model: str = "nomic-embed-text-v2-moe:latest",
     embedding_base_url: str = "http://localhost:11434",
 ) -> Dict[str, Any]:
     """Run a LangChain-only multi-stage RAG compliance workflow."""

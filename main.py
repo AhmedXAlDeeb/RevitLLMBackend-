@@ -28,7 +28,7 @@ class AgentReviewRequest(BaseModel):
     review_request: str = "Check room area compliance against the provided code."
     model: str = "qwen2.5:7b"
     base_url: str = "http://localhost:11434"
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_model: str = "nomic-embed-text-v2-moe:latest"
     embedding_base_url: str = "http://localhost:11434"
 
 
@@ -36,7 +36,7 @@ class RetrievalTestRequest(BaseModel):
     query: str = "minimum bedroom area"
     code_file: str = "data/2015_International_Building_Code-238-323.pdf"
     top_k: int = 4
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_model: str = "nomic-embed-text-v2-moe:latest"
     embedding_base_url: str = "http://localhost:11434"
 
 
@@ -46,7 +46,7 @@ class QuestionRulesRequest(BaseModel):
     top_k: int = 6
     model: str = "qwen2.5:7b"
     base_url: str = "http://localhost:11434"
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_model: str = "nomic-embed-text-v2-moe:latest"
     embedding_base_url: str = "http://localhost:11434"
 
 def check_room(room):

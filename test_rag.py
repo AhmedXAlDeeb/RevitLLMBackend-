@@ -2,7 +2,7 @@ from loaders.pdf_loader import PDFLoader
 from vectorstore.faiss_store import FAISSStore
 
 # Load PDF
-loader = PDFLoader("data/building_code.pdf")
+loader = PDFLoader("data/2015_International_Building_Code-238-323.pdf")
 chunks = loader.load_and_split()
 
 print(f"Loaded {len(chunks)} chunks")

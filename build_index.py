@@ -1,9 +1,9 @@
 import os
 import faiss
 import pickle
-from sentence_transformers import SentenceTransformer
 import numpy as np
 from langchain_community.document_loaders import PyPDFLoader
+from langchain_ollama import OllamaEmbeddings
 
 
 def _load_env_file(env_path: str = ".env"):
@@ -24,16 +24,32 @@ def _load_env_file(env_path: str = ".env"):
 _load_env_file()
 
 
+def _resolve_embedding_model(model: str | None = None) -> str:
+    if model and model.strip():
+        return model.strip()
+
+    env_model = os.getenv("OLLAMA_EMBEDDING_MODEL", "").strip()
+    if env_model:
+        return env_model
+
+    env_legacy_model = os.getenv("EMBEDDING_MODEL", "").strip()
+    if env_legacy_model:
+        return env_legacy_model
+
+    return "nomic-embed-text-v2-moe:latest"
+
+
 # Folder containing your documents
 DOCS_FOLDER = "data"
 
 # Output files
 INDEX_FILE = "vector.index"
 CHUNKS_FILE = "chunks.pkl"
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
 # Load embedding model
 print("Loading embedding model...")
-model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+model = OllamaEmbeddings(model=_resolve_embedding_model(), base_url=OLLAMA_BASE_URL)
 
 documents = []
 
@@ -65,7 +81,7 @@ for doc in documents:
 print(f"Total chunks: {len(chunks)}")
 
 print("Generating embeddings...")
-embeddings = model.encode(chunks)
+embeddings = model.embed_documents(chunks)
 
 if len(embeddings) == 0:
     raise ValueError("No embeddings generated. Check docs folder.")
