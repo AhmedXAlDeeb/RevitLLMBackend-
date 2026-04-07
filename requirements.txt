@@ -1,9 +1,9 @@
 fastapi
 pydantic
 uvicorn
+requests
 numpy
 faiss-cpu
-sentence-transformers
 langchain-community
 langchain-text-splitters
 langchain-ollama

@@ -1,0 +1,181 @@
+{
+  "pipeline_version": "1.0-langchain",
+  "generated_at": "2026-04-07T20:52:51.636859+00:00",
+  "input_analysis": {
+    "project_name": "Sample Residential Block A",
+    "requested_checks": [
+      "Check bedroom and kitchen area compliance against code"
+    ],
+    "elements": [
+      {
+        "id": "R-101",
+        "name": "Bedroom 1",
+        "category": "Room",
+        "area": 11.8,
+        "level": "Level 1"
+      },
+      {
+        "id": "R-102",
+        "name": "Bedroom 2",
+        "category": "Room",
+        "area": 14.6,
+        "level": "Level 1"
+      },
+      {
+        "id": "R-103",
+        "name": "Kitchen",
+        "category": "Room",
+        "area": 8.9,
+        "level": "Level 1"
+      },
+      {
+        "id": "R-104",
+        "name": "Living Room",
+        "category": "Room",
+        "area": 21.4,
+        "level": "Level 1"
+      }
+    ],
+    "assumptions": []
+  },
+  "retrieval_output": {
+    "retrieved_clauses": [
+      {
+        "check": "Check bedroom and kitchen area compliance against code",
+        "evidence": [
+          {
+            "rank": 1,
+            "content": "icinity of the bedrooms.\nWhere a fuel-burning appliance is located within a bed-\nroom or its attached bathroom, carbon monoxide detection\nshall be installed within the bedroom.\n[F] 915.2.2 Sleeping units.  Carbon monoxide detection\nshall be installed in sleeping units.\nException: Carbon monoxide detection shall be\nallowed to be installed outside of each separate sleep-\ning area in the immediate vicinity of the sleeping unit\nwhere the sleeping unit  or its attached bathroom does\nnot contain a fue",
+            "metadata": {
+              "chunk_index": 425,
+              "distance": 0.9749240875244141
+            }
+          },
+          {
+            "rank": 2,
+            "content": " to prevent egress.\n4. Means of egress from d\n welling units or sleeping areas\nshall not lead through other sleeping areas, toilet rooms\nor bathrooms.\n5. Egress shall not pass through kitchens, storage rooms,\nclosets or spaces used for similar purposes.\nExceptions:\n1. Means of egress  are not prohibited through a\nkitchen area serving adjoining rooms consti-\ntuting part of the same dwelling unit or sleep-\ning unit.\n2. Means of egress are not prohibited through\nstockrooms in Group M occupancies wh",
+            "metadata": {
+              "chunk_index": 721,
+              "distance": 0.9974321126937866
+            }
+          },
+          {
+            "rank": 3,
+            "content": "inery spaces.\n6. Machine rooms, machinery spaces, control\nrooms and control spaces associated with\noccupant evacuation elevators designed in\naccordance with Section 3008.\n[F] 903.3.1.1.2 Bathrooms.  In Group R occupan-\ncies, other than Group R-4 occupancies, sprinklers\nshall not be required in bathrooms that do not exceed\n55 square feet (5 m\n2) in area and are located within\nindividual dwelling units or sleeping units, provided\nthat walls and ceilings, including the walls and ceil-\nings behind a",
+            "metadata": {
+              "chunk_index": 60,
+              "distance": 1.002699613571167
+            }
+          },
+          {
+            "rank": 4,
+            "content": "de of dwelling units  and\nsleeping units.\n2. Laundry rooms, mechanical equipment rooms\nand storage rooms.\n3. All interior corridors serving sleeping units  or\ndwelling units.\nException: An automatic smoke detection\nsystem is not required in buildings that do not\nhave interior corridors serving sleeping units\nor dwelling units and where each sleeping unit\nor dwelling unit either has a means of egress\ndoor opening directly to an exterior exit access\nthat leads directly to an exit or a means of\negr",
+            "metadata": {
+              "chunk_index": 190,
+              "distance": 1.0141304731369019
+            }
+          }
+        ]
+      }
+    ],
+    "retrieval_notes": [
+      "Relevant sections address carbon monoxide detection in bedrooms, egress path restrictions through kitchens, sprinkler exceptions for small bathrooms, and smoke detection requirements for corridors."
+    ]
+  },
+  "review_output": {
+    "summary": {
+      "total_elements": 3,
+      "pass_count": 0,
+      "fail_count": 0,
+      "manual_review_count": 3
+    },
+    "findings": [
+      {
+        "element_id": "R-101",
+        "element_name": "Bedroom 1",
+        "check": "Check bedroom and kitchen area compliance against code",
+        "status": "needs-manual-review",
+        "reason": "Retrieved clauses do not contain minimum bedroom or kitchen area requirements. Retrieved evidence addresses carbon monoxide detection in bedrooms, egress path restrictions, sprinkler exceptions for bathrooms, and smoke detection in corridors. No relevant minimum square footage thresholds were retrieved for compliance evaluation.",
+        "evidence": [
+          "Retrieved clause rank 1: 'vicinity of the bedrooms. Where a fuel-burning appliance is located within a bedroom or its attached bathroom, carbon monoxide detection shall be installed within the bedroom.' - Addresses CO detection, not area requirements.",
+          "Retrieved clause rank 2: 'Egress shall not pass through kitchens, storage rooms, closets or spaces used for similar purposes.' - Addresses egress paths, not area requirements."
+        ]
+      },
+      {
+        "element_id": "R-102",
+        "element_name": "Bedroom 2",
+        "check": "Check bedroom and kitchen area compliance against code",
+        "status": "needs-manual-review",
+        "reason": "Retrieved clauses do not contain minimum bedroom or kitchen area requirements. Retrieved evidence addresses carbon monoxide detection in bedrooms, egress path restrictions, sprinkler exceptions for bathrooms, and smoke detection in corridors. No relevant minimum square footage thresholds were retrieved for compliance evaluation.",
+        "evidence": [
+          "Retrieved clause rank 1: 'vicinity of the bedrooms. Where a fuel-burning appliance is located within a bedroom or its attached bathroom, carbon monoxide detection shall be installed within the bedroom.' - Addresses CO detection, not area requirements.",
+          "Retrieved clause rank 2: 'Egress shall not pass through kitchens, storage rooms, closets or spaces used for similar purposes.' - Addresses egress paths, not area requirements."
+        ]
+      },
+      {
+        "element_id": "R-103",
+        "element_name": "Kitchen",
+        "check": "Check bedroom and kitchen area compliance against code",
+        "status": "needs-manual-review",
+        "reason": "Retrieved clauses do not contain minimum bedroom or kitchen area requirements. Retrieved evidence addresses carbon monoxide detection in bedrooms, egress path restrictions, sprinkler exceptions for bathrooms, and smoke detection in corridors. No relevant minimum square footage thresholds were retrieved for compliance evaluation.",
+        "evidence": [
+          "Retrieved clause rank 2: 'Egress shall not pass through kitchens, storage rooms, closets or spaces used for similar purposes.' - Addresses egress paths through kitchens, not minimum kitchen area requirements.",
+          "Retrieved clause rank 3: '[F] 903.3.1.1.2 Bathrooms. In Group R occupancies, other than Group R-4 occupancies, sprinklers shall not be required in bathrooms that do not exceed 55 square feet (5 m2) in area...' - Addresses bathroom sprinkler exceptions, not kitchen area requirements."
+        ]
+      }
+    ],
+    "global_notes": [
+      "The retrieved clauses do not contain relevant provisions for evaluating minimum bedroom or kitchen area compliance. The evidence retrieved addresses safety system requirements (carbon monoxide detection, egress restrictions, sprinkler installation, smoke detection) but provides no minimum square footage thresholds for residential room sizes.",
+      "R-104 (Living Room) was excluded from evaluation as it is not a bedroom or kitchen.",
+      "Manual review is required to obtain applicable building code provisions specifying minimum bedroom and kitchen areas for the jurisdiction.",
+      "Consider re-querying with keywords such as 'minimum bedroom size', 'minimum kitchen area', 'habitable room requirements', or 'room square footage code requirements'."
+    ]
+  },
+  "summary": {
+    "total_elements": 3,
+    "pass_count": 0,
+    "fail_count": 0,
+    "manual_review_count": 3
+  },
+  "findings": [
+    {
+      "element_id": "R-101",
+      "element_name": "Bedroom 1",
+      "check": "Check bedroom and kitchen area compliance against code",
+      "status": "needs-manual-review",
+      "reason": "Retrieved clauses do not contain minimum bedroom or kitchen area requirements. Retrieved evidence addresses carbon monoxide detection in bedrooms, egress path restrictions, sprinkler exceptions for bathrooms, and smoke detection in corridors. No relevant minimum square footage thresholds were retrieved for compliance evaluation.",
+      "evidence": [
+        "Retrieved clause rank 1: 'vicinity of the bedrooms. Where a fuel-burning appliance is located within a bedroom or its attached bathroom, carbon monoxide detection shall be installed within the bedroom.' - Addresses CO detection, not area requirements.",
+        "Retrieved clause rank 2: 'Egress shall not pass through kitchens, storage rooms, closets or spaces used for similar purposes.' - Addresses egress paths, not area requirements."
+      ]
+    },
+    {
+      "element_id": "R-102",
+      "element_name": "Bedroom 2",
+      "check": "Check bedroom and kitchen area compliance against code",
+      "status": "needs-manual-review",
+      "reason": "Retrieved clauses do not contain minimum bedroom or kitchen area requirements. Retrieved evidence addresses carbon monoxide detection in bedrooms, egress path restrictions, sprinkler exceptions for bathrooms, and smoke detection in corridors. No relevant minimum square footage thresholds were retrieved for compliance evaluation.",
+      "evidence": [
+        "Retrieved clause rank 1: 'vicinity of the bedrooms. Where a fuel-burning appliance is located within a bedroom or its attached bathroom, carbon monoxide detection shall be installed within the bedroom.' - Addresses CO detection, not area requirements.",
+        "Retrieved clause rank 2: 'Egress shall not pass through kitchens, storage rooms, closets or spaces used for similar purposes.' - Addresses egress paths, not area requirements."
+      ]
+    },
+    {
+      "element_id": "R-103",
+      "element_name": "Kitchen",
+      "check": "Check bedroom and kitchen area compliance against code",
+      "status": "needs-manual-review",
+      "reason": "Retrieved clauses do not contain minimum bedroom or kitchen area requirements. Retrieved evidence addresses carbon monoxide detection in bedrooms, egress path restrictions, sprinkler exceptions for bathrooms, and smoke detection in corridors. No relevant minimum square footage thresholds were retrieved for compliance evaluation.",
+      "evidence": [
+        "Retrieved clause rank 2: 'Egress shall not pass through kitchens, storage rooms, closets or spaces used for similar purposes.' - Addresses egress paths through kitchens, not minimum kitchen area requirements.",
+        "Retrieved clause rank 3: '[F] 903.3.1.1.2 Bathrooms. In Group R occupancies, other than Group R-4 occupancies, sprinklers shall not be required in bathrooms that do not exceed 55 square feet (5 m2) in area...' - Addresses bathroom sprinkler exceptions, not kitchen area requirements."
+      ]
+    }
+  ],
+  "global_notes": [
+    "The retrieved clauses do not contain relevant provisions for evaluating minimum bedroom or kitchen area compliance. The evidence retrieved addresses safety system requirements (carbon monoxide detection, egress restrictions, sprinkler installation, smoke detection) but provides no minimum square footage thresholds for residential room sizes.",
+    "R-104 (Living Room) was excluded from evaluation as it is not a bedroom or kitchen.",
+    "Manual review is required to obtain applicable building code provisions specifying minimum bedroom and kitchen areas for the jurisdiction.",
+    "Consider re-querying with keywords such as 'minimum bedroom size', 'minimum kitchen area', 'habitable room requirements', or 'room square footage code requirements'."
+  ]
+}

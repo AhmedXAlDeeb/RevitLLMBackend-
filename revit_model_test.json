@@ -1,0 +1,33 @@
+{
+  "project_name": "Sample Residential Block A",
+  "elements": [
+    {
+      "id": "R-101",
+      "name": "Bedroom 1",
+      "category": "Room",
+      "area": 11.8,
+      "level": "Level 1"
+    },
+    {
+      "id": "R-102",
+      "name": "Bedroom 2",
+      "category": "Room",
+      "area": 14.6,
+      "level": "Level 1"
+    },
+    {
+      "id": "R-103",
+      "name": "Kitchen",
+      "category": "Room",
+      "area": 8.9,
+      "level": "Level 1"
+    },
+    {
+      "id": "R-104",
+      "name": "Living Room",
+      "category": "Room",
+      "area": 21.4,
+      "level": "Level 1"
+    }
+  ]
+}
