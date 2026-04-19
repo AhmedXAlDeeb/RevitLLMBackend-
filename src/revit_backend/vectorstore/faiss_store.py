@@ -18,6 +18,7 @@ def _resolve_embedding_model(model: str | None = None) -> str:
     return "nomic-embed-text-v2-moe:latest"
 
 
+
 class FAISSStore:
     def __init__(
         self,
