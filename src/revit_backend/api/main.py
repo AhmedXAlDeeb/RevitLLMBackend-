@@ -2,15 +2,31 @@ from fastapi import FastAPI
 from fastapi import HTTPException
 from pydantic import BaseModel
 from typing import Any, Dict, List
+from pathlib import Path
+import sys
 
-from ..pipeline.agentic_revit_rag_agent import (
-    answer_question_with_rules,
-    extract_structured_rules,
-    init_code_vectorstore,
-    retrieve_code_context,
-    run_revit_review_pipeline,
-)
-from ..pipeline.rule_engine import evaluate_rules_for_elements
+try:
+    from ..pipeline.agentic_revit_rag_agent import (
+        answer_question_with_rules,
+        extract_structured_rules,
+        init_code_vectorstore,
+        retrieve_code_context,
+        run_revit_review_pipeline,
+    )
+    from ..pipeline.rule_engine import evaluate_rules_for_elements
+except ImportError:
+    # Support direct execution: `python src/revit_backend/api/main.py`.
+    project_root = Path(__file__).resolve().parents[3]
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    from src.revit_backend.pipeline.agentic_revit_rag_agent import (
+        answer_question_with_rules,
+        extract_structured_rules,
+        init_code_vectorstore,
+        retrieve_code_context,
+        run_revit_review_pipeline,
+    )
+    from src.revit_backend.pipeline.rule_engine import evaluate_rules_for_elements
 
 
 app = FastAPI()
@@ -230,3 +246,9 @@ def full_agentic_check(payload: FullComplianceRequest):
 def revit_integration_check(payload: FullComplianceRequest):
     """Stable integration alias for Revit add-in callers."""
     return full_agentic_check(payload)
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="revit-backend", port=8000)   
